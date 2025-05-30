@@ -23,16 +23,22 @@ const Feed = () => {
   if (!feed) return;
 
   if (feed.length <= 0)
-    return <h1 className="flex justify-center my-10">No new users founds!</h1>;
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <h1 className="text-xl font-semibold text-base-content">
+          No new users found!
+        </h1>
+      </div>
+    );
 
   return (
-    feed && (
-      <div>
-        {feed.map((eachUser) => {
-          return <UserCard key={eachUser._id} user={eachUser} />;
-        })}
+    <div className="max-w-5xl mx-auto px-4 py-6">
+      <div className="space-y-4">
+        {feed.map((eachUser) => (
+          <UserCard key={eachUser._id} user={eachUser} />
+        ))}
       </div>
-    )
+    </div>
   );
 };
 

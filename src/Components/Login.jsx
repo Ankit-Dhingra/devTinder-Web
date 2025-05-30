@@ -43,7 +43,6 @@ const Login = () => {
         { firstName, lastName, emailId, password },
         { withCredentials: true }
       );
-      console.log(res);
       dispatch(addUser(res.data.data));
       return navigate("/profile");
     } catch (error) {
@@ -52,83 +51,110 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-10">
-      <div className="card card-border bg-base-300 w-96">
-        <div className="card-body">
-          <h2 className="card-title justify-center font-bold">
-            {isLoginForm ? "Login" : "Sign Up"}
-          </h2>
-          <div>
-            {!isLoginForm && (
-              <>
-                <fieldset className="fieldset">
-                  <legend className="fieldset-legend">First Name</legend>
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter your First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </fieldset>
-                <fieldset className="fieldset">
-                  <legend className="fieldset-legend">Last Name</legend>
-                  <input
-                    type="text"
-                    className="input"
-                    placeholder="Enter your Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </fieldset>
-              </>
-            )}
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Email ID</legend>
+  <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-base-100 relative overflow-hidden px-4 py-8">
+    {/* LEFT TEXT SECTION */}
+    <div className="hidden lg:flex flex-col justify-center w-1/2 z-10 animate-fade-in">
+      <h1 className="text-5xl font-extrabold mb-6">Welcome to DevTinder 👨‍💻❤️</h1>
+      <p className="text-lg opacity-70 max-w-md animate-fade-in-delay">
+        Connect. Collaborate. Code. Match with like-minded developers and build something amazing together.
+      </p>
+    </div>
+
+    {/* RIGHT FORM SECTION */}
+    <div className="w-full lg:w-1/2 z-10">
+      <div className="bg-white/10 backdrop-blur-md rounded-xl shadow-xl p-8 mx-auto max-w-md border border-white/20 ">
+        <h2 className="text-3xl font-bold text-center mb-6">
+          {isLoginForm ? "Login" : "Sign Up"}
+        </h2>
+
+        {!isLoginForm && (
+          <>
+            <fieldset className="mb-4">
+              <legend className="text-sm  mb-1">First Name</legend>
               <input
-                type="email"
-                className="input"
-                placeholder="Enter your Email ID"
-                value={emailId}
-                onChange={(e) => setEmailId(e.target.value)}
+                type="text"
+                className="input input-bordered w-full"
+                placeholder="Enter your first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
               />
             </fieldset>
-            <fieldset className="fieldset">
-              <legend className="fieldset-legend">Password</legend>
+            <fieldset className="mb-4">
+              <legend className="text-sm  mb-1">Last Name</legend>
               <input
-                type="password"
-                className="input"
-                placeholder="Enter your Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type="text"
+                className="input input-bordered w-full"
+                placeholder="Enter your last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
               />
             </fieldset>
-          </div>
-          <p className="text-red-600 ">{error}</p>
-          <div className="card-actions justify-center">
-            <button className="btn btn-primary" onClick={() => isLoginForm ? handleLogin() : handleSignUp()}>
-             {isLoginForm ? "Login" : "Sign Up"}
-            </button>
-          </div>
-          <p>
-            {isLoginForm ? (
-              <div onClick={() => setIsLoginForm((value) => !value)}>
-                Create your account,{" "}
-                <span className="text-blue-400 cursor-pointer">click here</span>
-              </div>
-            ) : (
-              <div onClick={() => setIsLoginForm((value) => !value)}>
-                Already a user?{" "}
-                <span className="text-blue-400 cursor-pointer">
-                  click here to login
-                </span>
-              </div>
-            )}
-          </p>
-        </div>
+          </>
+        )}
+
+        <fieldset className="mb-4">
+          <legend className="text-sm  mb-1">Email ID</legend>
+          <input
+            type="email"
+            className="input input-bordered w-full"
+            placeholder="Enter your email"
+            value={emailId}
+            onChange={(e) => setEmailId(e.target.value)}
+          />
+        </fieldset>
+
+        <fieldset className="mb-4">
+          <legend className="text-sm  mb-1">Password</legend>
+          <input
+            type="password"
+            className="input input-bordered w-full"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </fieldset>
+
+        {error && <p className="text-red-400 text-sm mb-2">{error}</p>}
+
+        <button
+          className="btn btn-primary w-full"
+          onClick={() => (isLoginForm ? handleLogin() : handleSignUp())}
+        >
+          {isLoginForm ? "Login" : "Sign Up"}
+        </button>
+
+        <p className="text-center text-sm mt-4 ">
+          {isLoginForm ? (
+            <span>
+              Don't have an account?{" "}
+              <span
+                className="text-blue-400 cursor-pointer underline"
+                onClick={() => setIsLoginForm(false)}
+              >
+                Sign up here
+              </span>
+            </span>
+          ) : (
+            <span>
+              Already registered?{" "}
+              <span
+                className="text-blue-400 cursor-pointer underline"
+                onClick={() => setIsLoginForm(true)}
+              >
+                Login here
+              </span>
+            </span>
+          )}
+        </p>
       </div>
     </div>
-  );
+
+    {/* BG Blobs */}
+    <div className="absolute w-[600px] h-[600px] bg-purple-500 opacity-30 rounded-full blur-3xl top-[150px] right-[-150px] z-0"></div>
+    <div className="absolute w-[600px] h-[600px] bg-purple-500 opacity-30 rounded-full blur-3xl top-[100px] left-[-150px] z-0"></div>
+    <div className="absolute w-[400px] h-[400px] bg-pink-500 opacity-20 rounded-full blur-2xl bottom-[-100px] left-[-100px] z-0"></div>
+  </div>
+);
 };
 
 export default Login;
