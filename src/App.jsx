@@ -7,6 +7,11 @@ import Profile from "./Components/Profile";
 import Feed from "./Components/Feed";
 import Connections from "./Components/Connections";
 import Requests from "./Components/Requests";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
+import TandC from "./Components/TandC";
+import Refund from "./Components/Refund";
+import Shipping from "./Components/Shipping";
+import ContactUs from "./Components/ContactUs";
 
 const App = () => {
   return (
@@ -19,6 +24,11 @@ const App = () => {
             <Route path="/profile" element={<Profile/>}></Route>
             <Route path="/connections" element={<Connections/>}></Route>
             <Route path="/requests" element={<Requests/>}></Route>
+            <Route path="/privacy-policy" element={<PrivacyPolicy/>}></Route>
+            <Route path="/terms" element={<TandC/>}></Route>
+            <Route path="/cancellation-refund" element={<Refund/>}></Route>
+            <Route path="/shipping-delivery" element={<Shipping/>}></Route>
+            <Route path="/contact-us" element={<ContactUs/>}></Route>
             Connections
           </Route>
         </Routes>
