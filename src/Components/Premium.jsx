@@ -14,7 +14,7 @@ const Premium = () => {
     try {
       const stripe = await stripePromise;
 
-      // Call backend to create checkout session
+      // Call backend API to create checkout session
       const data = await axios.post(
         `${BASE_URL}/create-checkout-session`,
         { plan },
