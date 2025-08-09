@@ -3,10 +3,20 @@ import React from "react";
 import { BASE_URL } from "../utils/Constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
+import { BsPatchCheckFill } from "react-icons/bs";
 
 const UserCard = ({ user }) => {
-  const { _id, firstName, lastName, about, photoUrl, age, gender, showButton } =
-    user;
+  const {
+    _id,
+    firstName,
+    lastName,
+    about,
+    photoUrl,
+    age,
+    gender,
+    showButton,
+    isPremium,
+  } = user;
   const dispatch = useDispatch();
 
   const sendRequest = async (status, userId) => {
@@ -33,8 +43,11 @@ const UserCard = ({ user }) => {
           />
         </figure>
         <div className="card-body px-6 py-4">
-          <h2 className="card-title text-xl font-semibold  mb-2">
+          <h2 className="card-title text-xl font-semibold mb-2 flex items-center gap-2">
             {firstName} {lastName}
+            {isPremium && (
+              <BsPatchCheckFill className="text-blue-500" size={20} />
+            )}
           </h2>
           {age && gender && (
             <p className="text-sm  mb-2">

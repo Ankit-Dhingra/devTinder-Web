@@ -12,6 +12,7 @@ import TandC from "./Components/TandC";
 import Refund from "./Components/Refund";
 import Shipping from "./Components/Shipping";
 import ContactUs from "./Components/ContactUs";
+import Premium from "./Components/Premium";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/cancellation-refund" element={<Refund/>}></Route>
             <Route path="/shipping-delivery" element={<Shipping/>}></Route>
             <Route path="/contact-us" element={<ContactUs/>}></Route>
+            <Route path="/premium" element={<Premium/>}></Route>
             Connections
           </Route>
         </Routes>
