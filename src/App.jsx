@@ -13,6 +13,7 @@ import Refund from "./Components/Refund";
 import Shipping from "./Components/Shipping";
 import ContactUs from "./Components/ContactUs";
 import Premium from "./Components/Premium";
+import Chat from "./Components/Chat";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/shipping-delivery" element={<Shipping/>}></Route>
             <Route path="/contact-us" element={<ContactUs/>}></Route>
             <Route path="/premium" element={<Premium/>}></Route>
+            <Route path="/chat/:targetUserId" element={<Chat/>}></Route>
             Connections
           </Route>
         </Routes>
